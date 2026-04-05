@@ -28,7 +28,9 @@
   --font-mono: "JetBrains Mono", "Fira Code", monospace;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
 }
 
@@ -416,7 +418,9 @@ body {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .spinning {
@@ -430,7 +434,10 @@ body {
   text-underline-offset: 3px;
   text-decoration-thickness: 1.5px;
   cursor: help;
-  transition: background 0.15s ease, text-decoration-style 0.15s ease, text-decoration-thickness 0.15s ease;
+  transition:
+    background 0.15s ease,
+    text-decoration-style 0.15s ease,
+    text-decoration-thickness 0.15s ease;
   border-radius: 2px;
   padding: 0 1px;
 }
@@ -441,19 +448,43 @@ body {
   text-decoration-thickness: 2px;
 }
 
-.definition-mark.color-0 { text-decoration-color: #a78bfa; }
-.definition-mark.color-1 { text-decoration-color: #34d399; }
-.definition-mark.color-2 { text-decoration-color: #f9a8d4; }
-.definition-mark.color-3 { text-decoration-color: #fbbf24; }
-.definition-mark.color-4 { text-decoration-color: #67e8f9; }
-.definition-mark.color-5 { text-decoration-color: #fb923c; }
+.definition-mark.color-0 {
+  text-decoration-color: #a78bfa;
+}
+.definition-mark.color-1 {
+  text-decoration-color: #34d399;
+}
+.definition-mark.color-2 {
+  text-decoration-color: #f9a8d4;
+}
+.definition-mark.color-3 {
+  text-decoration-color: #fbbf24;
+}
+.definition-mark.color-4 {
+  text-decoration-color: #67e8f9;
+}
+.definition-mark.color-5 {
+  text-decoration-color: #fb923c;
+}
 
-.definition-mark.color-0:hover { background: #a78bfa12; }
-.definition-mark.color-1:hover { background: #34d39912; }
-.definition-mark.color-2:hover { background: #f9a8d412; }
-.definition-mark.color-3:hover { background: #fbbf2412; }
-.definition-mark.color-4:hover { background: #67e8f912; }
-.definition-mark.color-5:hover { background: #fb923c12; }
+.definition-mark.color-0:hover {
+  background: #a78bfa12;
+}
+.definition-mark.color-1:hover {
+  background: #34d39912;
+}
+.definition-mark.color-2:hover {
+  background: #f9a8d412;
+}
+.definition-mark.color-3:hover {
+  background: #fbbf2412;
+}
+.definition-mark.color-4:hover {
+  background: #67e8f912;
+}
+.definition-mark.color-5:hover {
+  background: #fb923c12;
+}
 
 /* ── Grammar Marks ── */
 .grammar-mark {
@@ -729,7 +760,9 @@ body {
 }
 
 .saved-phrase-latest {
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .saved-phrase-glow {

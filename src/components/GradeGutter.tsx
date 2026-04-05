@@ -3,12 +3,27 @@ import { MoreHorizontal, ExternalLink } from "lucide-react";
 import type { SegmentAnalysis } from "../lib/segment-cache";
 
 const LANG_CODES: Record<string, string> = {
-  German: "de", Spanish: "es", French: "fr", Italian: "it",
-  Portuguese: "pt", Dutch: "nl", Russian: "ru", Japanese: "ja",
-  Korean: "ko", "Mandarin Chinese": "zh-CN", Arabic: "ar",
-  Hindi: "hi", Turkish: "tr", Polish: "pl", Swedish: "sv",
-  Greek: "el", Hebrew: "iw", Vietnamese: "vi", Thai: "th",
-  Indonesian: "id", English: "en",
+  German: "de",
+  Spanish: "es",
+  French: "fr",
+  Italian: "it",
+  Portuguese: "pt",
+  Dutch: "nl",
+  Russian: "ru",
+  Japanese: "ja",
+  Korean: "ko",
+  "Mandarin Chinese": "zh-CN",
+  Arabic: "ar",
+  Hindi: "hi",
+  Turkish: "tr",
+  Polish: "pl",
+  Swedish: "sv",
+  Greek: "el",
+  Hebrew: "iw",
+  Vietnamese: "vi",
+  Thai: "th",
+  Indonesian: "id",
+  English: "en",
 };
 
 function langCode(lang: string): string {
@@ -26,12 +41,18 @@ export interface GutterItem {
 function gradeColor(grade: string): string {
   const letter = grade.charAt(0);
   switch (letter) {
-    case "A": return "#34d399";
-    case "B": return "#a78bfa";
-    case "C": return "#fbbf24";
-    case "D": return "#fb923c";
-    case "F": return "#f87171";
-    default: return "#71717a";
+    case "A":
+      return "#34d399";
+    case "B":
+      return "#a78bfa";
+    case "C":
+      return "#fbbf24";
+    case "D":
+      return "#fb923c";
+    case "F":
+      return "#f87171";
+    default:
+      return "#71717a";
   }
 }
 
@@ -61,11 +82,7 @@ export function GradeGutter({ items, targetLanguage }: GradeGutterProps) {
   return (
     <div className="grade-gutter">
       {items.map((g, i) => (
-        <div
-          key={i}
-          className="grade-row"
-          style={{ top: g.top }}
-        >
+        <div key={i} className="grade-row" style={{ top: g.top }}>
           <button
             className="grade-action-btn"
             onClick={(e) => {
@@ -111,10 +128,7 @@ export function GradeGutter({ items, targetLanguage }: GradeGutterProps) {
       ))}
 
       {hover && hover.grade && hover.feedback && (
-        <div
-          className="grade-tooltip"
-          style={{ top: hover.top }}
-        >
+        <div className="grade-tooltip" style={{ top: hover.top }}>
           <div className="grade-tooltip-grade" style={{ color: gradeColor(hover.grade) }}>
             {hover.grade}
           </div>
