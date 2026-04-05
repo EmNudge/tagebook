@@ -1,7 +1,7 @@
 {
   "name": "tagebook",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -40,5 +40,6 @@
     "oxlint-tsgolint": "^0.19.0",
     "typescript": "~5.9.3",
     "vite": "^8.0.1"
-  }
+  },
+  "packageManager": "pnpm@10.33.0"
 }

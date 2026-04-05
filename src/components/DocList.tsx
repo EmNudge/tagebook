@@ -1,11 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  getDocs,
-  createDoc,
-  deleteDoc,
-  subscribe,
-  type DocMeta,
-} from "../lib/documents";
+import { getDocs, createDoc, deleteDoc, subscribe, type DocMeta } from "../lib/documents";
 import { Plus, Trash2, FileText } from "lucide-react";
 
 interface DocListProps {

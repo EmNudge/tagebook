@@ -1,9 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Bookmark } from "lucide-react";
-import {
-  isSaved,
-  removeSavedPhraseByContent,
-} from "../lib/saved-phrases";
+import { isSaved, removeSavedPhraseByContent } from "../lib/saved-phrases";
 
 interface TooltipData {
   type: "definition" | "grammar";
@@ -174,11 +171,7 @@ export function TranslationTooltip({ language, onSave }: TranslationTooltipProps
           onClick={() => {
             const next = !saved;
             if (next) {
-              onSave(
-                tooltip.definition ?? "",
-                tooltip.phrase ?? "",
-                tooltip.partOfSpeech ?? "",
-              );
+              onSave(tooltip.definition ?? "", tooltip.phrase ?? "", tooltip.partOfSpeech ?? "");
             } else {
               removeSavedPhraseByContent(tooltip.definition ?? "", language);
             }
@@ -203,12 +196,8 @@ export function TranslationTooltip({ language, onSave }: TranslationTooltipProps
       )}
       {tooltip.type === "grammar" && (
         <>
-          <div className="annotation-tooltip-correction">
-            {tooltip.correction}
-          </div>
-          <div className="annotation-tooltip-explanation">
-            {tooltip.explanation}
-          </div>
+          <div className="annotation-tooltip-correction">{tooltip.correction}</div>
+          <div className="annotation-tooltip-explanation">{tooltip.explanation}</div>
         </>
       )}
     </div>

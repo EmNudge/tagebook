@@ -244,14 +244,17 @@ export function Editor() {
     setDocTitle(doc?.title ?? "");
   }, [activeDocId]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const switchDoc = useCallback((id: string) => {
-    // Save current doc before switching
-    if (editor) {
-      saveDocContent(activeDocIdRef.current, editor.getHTML());
-    }
-    setActiveDocId(id);
-    setActiveDoc(id);
-  }, [editor]);
+  const switchDoc = useCallback(
+    (id: string) => {
+      // Save current doc before switching
+      if (editor) {
+        saveDocContent(activeDocIdRef.current, editor.getHTML());
+      }
+      setActiveDocId(id);
+      setActiveDoc(id);
+    },
+    [editor],
+  );
 
   langRef.current = targetLanguage;
 
@@ -404,7 +407,11 @@ export function Editor() {
 
   // Persist language and re-analyze when it changes
   useEffect(() => {
-    try { localStorage.setItem(LANG_KEY, targetLanguage); } catch { /* ignore */ }
+    try {
+      localStorage.setItem(LANG_KEY, targetLanguage);
+    } catch {
+      /* ignore */
+    }
     if (!editor) return;
     analysisMapRef.current.clear();
 
@@ -470,9 +477,7 @@ export function Editor() {
                 </span>
               </div>
             )}
-            {error && (
-              <div className="analyzing-error-inline">{error}</div>
-            )}
+            {error && <div className="analyzing-error-inline">{error}</div>}
             <div className="language-dropdown-wrapper">
               <button
                 className="language-selector"
@@ -513,18 +518,14 @@ export function Editor() {
         <div className="editor-footer">
           <div className="word-count">
             <PenLine size={14} />
-            <span>
-              {editor?.getText().split(/\s+/).filter(Boolean).length ?? 0} words
-            </span>
+            <span>{editor?.getText().split(/\s+/).filter(Boolean).length ?? 0} words</span>
           </div>
           {cachedCount > 0 && (
             <div className="cache-indicator">
               {cachedCount} segment{cachedCount !== 1 ? "s" : ""} cached
             </div>
           )}
-          <div className="footer-hint">
-            Definitions &amp; grammar checks appear as you write
-          </div>
+          <div className="footer-hint">Definitions &amp; grammar checks appear as you write</div>
         </div>
       </div>
 

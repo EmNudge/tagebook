@@ -9,12 +9,27 @@ import {
 import { X, BookmarkCheck, MoreHorizontal, ExternalLink } from "lucide-react";
 
 const LANG_CODES: Record<string, string> = {
-  German: "de", Spanish: "es", French: "fr", Italian: "it",
-  Portuguese: "pt", Dutch: "nl", Russian: "ru", Japanese: "ja",
-  Korean: "ko", "Mandarin Chinese": "zh-CN", Arabic: "ar",
-  Hindi: "hi", Turkish: "tr", Polish: "pl", Swedish: "sv",
-  Greek: "el", Hebrew: "iw", Vietnamese: "vi", Thai: "th",
-  Indonesian: "id", English: "en",
+  German: "de",
+  Spanish: "es",
+  French: "fr",
+  Italian: "it",
+  Portuguese: "pt",
+  Dutch: "nl",
+  Russian: "ru",
+  Japanese: "ja",
+  Korean: "ko",
+  "Mandarin Chinese": "zh-CN",
+  Arabic: "ar",
+  Hindi: "hi",
+  Turkish: "tr",
+  Polish: "pl",
+  Swedish: "sv",
+  Greek: "el",
+  Hebrew: "iw",
+  Vietnamese: "vi",
+  Thai: "th",
+  Indonesian: "id",
+  English: "en",
 };
 
 interface HoverTip {
@@ -127,13 +142,10 @@ export function SavedPhrases() {
       const dy = oldRect.top - newRect.top;
       if (Math.abs(dy) < 1) continue;
 
-      el.animate(
-        [
-          { transform: `translateY(${dy}px)` },
-          { transform: "translateY(0)" },
-        ],
-        { duration: 300, easing: "cubic-bezier(0.2, 0, 0, 1)" },
-      );
+      el.animate([{ transform: `translateY(${dy}px)` }, { transform: "translateY(0)" }], {
+        duration: 300,
+        easing: "cubic-bezier(0.2, 0, 0, 1)",
+      });
     }
 
     rectsRef.current = new Map();
@@ -172,7 +184,9 @@ export function SavedPhrases() {
 
     // FLIP: capture old position before update
     const tipEl = tipRef.current;
-    const oldY = tipEl ? tipEl.getBoundingClientRect().top + tipEl.getBoundingClientRect().height / 2 : null;
+    const oldY = tipEl
+      ? tipEl.getBoundingClientRect().top + tipEl.getBoundingClientRect().height / 2
+      : null;
 
     setHoverTip({
       phrase: p.phrase,
@@ -214,10 +228,7 @@ export function SavedPhrases() {
   const openInTranslate = (p: SavedPhrase) => {
     const sl = LANG_CODES[p.language] ?? "auto";
     const text = encodeURIComponent(p.phrase);
-    window.open(
-      `https://translate.google.com/?sl=${sl}&tl=en&text=${text}&op=translate`,
-      "_blank",
-    );
+    window.open(`https://translate.google.com/?sl=${sl}&tl=en&text=${text}&op=translate`, "_blank");
     setMenuForId(null);
   };
 
@@ -234,10 +245,7 @@ export function SavedPhrases() {
       </button>
       {menuForId === p.id && (
         <div className="saved-phrase-menu" ref={menuRef}>
-          <button
-            className="saved-phrase-menu-item"
-            onClick={() => openInTranslate(p)}
-          >
+          <button className="saved-phrase-menu-item" onClick={() => openInTranslate(p)}>
             <ExternalLink size={12} />
             <span>Open in Google Translate</span>
           </button>
@@ -264,9 +272,7 @@ export function SavedPhrases() {
       >
         <div className="saved-phrase-top">
           <span className="saved-phrase-text">{latest.phrase}</span>
-          {latest.partOfSpeech && (
-            <span className="saved-phrase-pos">{latest.partOfSpeech}</span>
-          )}
+          {latest.partOfSpeech && <span className="saved-phrase-pos">{latest.partOfSpeech}</span>}
           {renderMenu(latest)}
           <button
             className="saved-phrase-remove"
@@ -290,9 +296,7 @@ export function SavedPhrases() {
               onMouseLeave={scheduleHideTip}
             >
               <span className="saved-phrase-text">{p.phrase}</span>
-              {p.partOfSpeech && (
-                <span className="saved-phrase-pos">{p.partOfSpeech}</span>
-              )}
+              {p.partOfSpeech && <span className="saved-phrase-pos">{p.partOfSpeech}</span>}
               {renderMenu(p)}
               <button
                 className="saved-phrase-remove"

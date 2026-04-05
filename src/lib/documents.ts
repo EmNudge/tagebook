@@ -26,7 +26,9 @@ function loadIndex(): DocMeta[] {
 function saveIndex(docs: DocMeta[]) {
   try {
     localStorage.setItem(INDEX_KEY, JSON.stringify(docs));
-  } catch { /* ignore */ }
+  } catch {
+    /* ignore */
+  }
 }
 
 let docs = loadIndex();
@@ -58,7 +60,9 @@ export function getActiveDocId(): string | null {
 export function setActiveDocId(id: string) {
   try {
     localStorage.setItem(ACTIVE_KEY, id);
-  } catch { /* ignore */ }
+  } catch {
+    /* ignore */
+  }
 }
 
 function todayTitle(): string {
@@ -97,7 +101,9 @@ export function deleteDoc(id: string) {
   saveIndex(docs);
   try {
     localStorage.removeItem(DOC_PREFIX + id);
-  } catch { /* ignore */ }
+  } catch {
+    /* ignore */
+  }
   notify();
 }
 
@@ -112,7 +118,9 @@ export function loadDocContent(id: string): string {
 export function saveDocContent(id: string, html: string) {
   try {
     localStorage.setItem(DOC_PREFIX + id, html);
-  } catch { /* ignore */ }
+  } catch {
+    /* ignore */
+  }
   // Update timestamp in index
   docs = docs.map((d) => (d.id === id ? { ...d, updatedAt: Date.now() } : d));
   saveIndex(docs);
@@ -126,6 +134,8 @@ export function migrateOldContent(): string | null {
       localStorage.removeItem("tagebook:editor-content");
       return old;
     }
-  } catch { /* ignore */ }
+  } catch {
+    /* ignore */
+  }
   return null;
 }

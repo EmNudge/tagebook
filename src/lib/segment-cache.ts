@@ -1,9 +1,4 @@
-import {
-  getDefinitions,
-  getGrammarCheck,
-  type WordDefinition,
-  type GrammarIssue,
-} from "./ollama";
+import { getDefinitions, getGrammarCheck, type WordDefinition, type GrammarIssue } from "./ollama";
 
 export interface SegmentInfo {
   text: string;
@@ -68,10 +63,7 @@ export function splitSegments(text: string): SegmentInfo[] {
 }
 
 /** Find which segment the cursor (as a character offset in plain text) falls in. */
-export function getActiveSegmentIndex(
-  segments: SegmentInfo[],
-  cursorOffset: number,
-): number {
+export function getActiveSegmentIndex(segments: SegmentInfo[], cursorOffset: number): number {
   for (let i = 0; i < segments.length; i++) {
     if (cursorOffset >= segments[i].start && cursorOffset <= segments[i].end) {
       return i;

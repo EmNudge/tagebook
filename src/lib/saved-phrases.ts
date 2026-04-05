@@ -36,7 +36,9 @@ function loadFromStorage(): SavedPhrase[] {
 function persist() {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(phrases));
-  } catch { /* quota exceeded — silently ignore */ }
+  } catch {
+    /* quota exceeded — silently ignore */
+  }
 }
 
 function notify() {
@@ -81,9 +83,7 @@ export function removeSavedPhraseByContent(phrase: string, language: string): vo
 }
 
 export function updateWordBreakdown(id: string, breakdown: WordBreakdown[]): void {
-  phrases = phrases.map((p) =>
-    p.id === id ? { ...p, wordBreakdown: breakdown } : p,
-  );
+  phrases = phrases.map((p) => (p.id === id ? { ...p, wordBreakdown: breakdown } : p));
   notify();
 }
 
